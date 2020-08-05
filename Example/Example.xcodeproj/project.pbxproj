@@ -66,9 +66,9 @@
 		C4B94AF824DA33DD0089FB45 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C4B94AED24DA332A0089FB45 /* Assets.xcassets */,
-				C4B94AEF24DA332A0089FB45 /* LaunchScreen.storyboard */,
-				C4B94AF224DA332A0089FB45 /* Info.plist */,
+				C4B94B0424DA3FBD0089FB45 /* HUD.swift */,
+				C4B94AE424DA33280089FB45 /* AppDelegate.swift */,
+				C4B94AE824DA33280089FB45 /* ViewController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -76,9 +76,9 @@
 		C4B94AF924DA33EC0089FB45 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C4B94B0424DA3FBD0089FB45 /* HUD.swift */,
-				C4B94AE424DA33280089FB45 /* AppDelegate.swift */,
-				C4B94AE824DA33280089FB45 /* ViewController.swift */,
+				C4B94AED24DA332A0089FB45 /* Assets.xcassets */,
+				C4B94AEF24DA332A0089FB45 /* LaunchScreen.storyboard */,
+				C4B94AF224DA332A0089FB45 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -310,7 +310,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Example/Source/Info.plist;
+				INFOPLIST_FILE = Example/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -328,7 +328,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Example/Source/Info.plist;
+				INFOPLIST_FILE = Example/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
