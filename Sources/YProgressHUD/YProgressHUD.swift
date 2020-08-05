@@ -335,18 +335,19 @@ public class YProgressHUD: UIView {
     }
 
     private func getKeyWindow() -> UIWindow? {
-        var window: UIWindow? = nil
-        if #available(iOS 13.0, *) {
-            for windowScene: UIWindowScene in ((UIApplication.shared.connectedScenes as? Set<UIWindowScene>)!) {
-                if windowScene.activationState == .foregroundActive {
-                    window = windowScene.windows.last
-                    break
-                }
+        var window: UIWindow?
+        
+        #if targetEnvironment(macCatalyst)
+            window = UIApplication.shared.windows.last
+        #else
+            if #available(iOS 13.0, *) {
+                window = UIApplication.shared.windows[0]
+            }else{
+                window = UIApplication.shared.keyWindow
             }
-            return window
-        }else{
-            return UIApplication.shared.keyWindow
-        }
+        #endif
+        
+        return window
     }
     
     private func setupBackground(_ interaction: Bool) {
