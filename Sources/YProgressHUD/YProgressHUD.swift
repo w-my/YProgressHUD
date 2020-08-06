@@ -336,16 +336,18 @@ public class YProgressHUD: UIView {
 
     private func getKeyWindow() -> UIWindow? {
         var window: UIWindow?
-        
-        #if targetEnvironment(macCatalyst)
-            window = UIApplication.shared.windows.last
-        #else
-            if #available(iOS 13.0, *) {
-                window = UIApplication.shared.windows[0]
-            }else{
-                window = UIApplication.shared.keyWindow
-            }
-        #endif
+
+        if #available(iOS 13.0, *) {
+            window = UIApplication.shared.windows.first(where: { (wd) -> Bool in
+                if wd.isKeyWindow {
+                    return true
+                } else {
+                    return false
+                }
+            })
+        }else{
+            window = UIApplication.shared.keyWindow
+        }
         
         return window
     }
@@ -531,7 +533,18 @@ public class YProgressHUD: UIView {
             heightKeyboard = keyboardHeight()
         }
 
-        let screen = UIScreen.main.bounds
+        var screen = UIScreen.main.bounds
+        if (UIApplication.shared.statusBarOrientation == .landscapeLeft)
+            || (UIApplication.shared.statusBarOrientation == .landscapeRight) {
+            screen = CGRect(origin: screen.origin,
+                            size: CGSize(width: max(screen.width, screen.height),
+                                         height: min(screen.width, screen.height)))
+        }
+        else {
+            screen = CGRect(origin: screen.origin,
+                            size: CGSize(width: min(screen.width, screen.height),
+                                         height: max(screen.width, screen.height)))
+        }
         let center = CGPoint(x: screen.size.width/2, y: (screen.size.height-heightKeyboard)/2)
 
         UIView.animate(withDuration: animationDuration, delay: 0, options: .allowUserInteraction, animations: {

@@ -14,18 +14,26 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
     }
-
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        test()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        test()
+    }
+
+    func test() {
         
-        // MARK: - 使用方式一：直接使用YProgressHUD
+// MARK: - 使用方式一：直接使用YProgressHUD
 //        YProgressHUD.showToast("Some text...")
 //        YProgressHUD.showToast("Some text...", delay: 5, interaction: false)
-
+        
 //        YProgressHUD.animationType = .systemActivityIndicator
 //        YProgressHUD.show("loading...", interaction: false)
-//
+
 //        YProgressHUD.colorAnimation = UIColor.green.withAlphaComponent(0.68)
 //        YProgressHUD.showSucceed("Success", interaction: true)
 //
@@ -41,12 +49,13 @@ class ViewController: UIViewController {
 //            YProgressHUD.showError("Error")
 //            YProgressHUD.colorAnimation = .red
 //            YProgressHUD.show("alert icon", icon: .heart)
-//        }
 //
+//        }
 //        YProgressHUD.showProgress(0.6, interaction: false)
 //        YProgressHUD.showProgress("upload..." , 0.6, interaction: false)
+
         
-        // MARK: - 使用方式二（推荐）：根据目需求二次封装一个HUD类
+// MARK: - 使用方式二（推荐）：根据目需求二次封装一个HUD类
 //        HUD.toast("Some text...")
         HUD.toast("Some text...", delay: 5, interaction: false)
 //        HUD.showLoading()
@@ -54,7 +63,7 @@ class ViewController: UIViewController {
 //        HUD.showFailed()
 //        HUD.showProgress(0.4)
 //        HUD.showProgress("upload...", 0.6)
+                
     }
-
 }
 
