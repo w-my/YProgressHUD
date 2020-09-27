@@ -154,14 +154,17 @@ public extension YProgressHUD {
 public extension YProgressHUD {
 
     // MARK: - dismiss
-    class func dismiss() {
+    class func dismiss(animate: Bool = true) {
         DispatchQueue.main.async {
-            shared.hudHide()
+            shared.hudHide(animate: animate)
         }
     }
 
     // MARK: - toast
     class func showToast(_ status: String? = nil, delay: Double = -1, interaction: Bool = true) {
+        if shared.alpha > 0 {
+            dismiss(animate: false)
+        }
         DispatchQueue.main.async {
             shared.setup(status: status, delay:delay, hide: true, interaction: interaction)
         }
@@ -594,15 +597,19 @@ public class YProgressHUD: UIView {
         }
     }
 
-    private func hudHide() {
-        if (self.alpha == 1) {
+    private func hudHide(animate: Bool = true) {
+        if (animate && self.alpha == 1) {
             UIView.animate(withDuration: 0.15, delay: 0, options: [.allowUserInteraction, .curveEaseIn], animations: {
                 self.toolbarHUD?.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
                 self.toolbarHUD?.alpha = 0
             }, completion: { isFinished in
-                self.hudDestroy()
                 self.alpha = 0
+                self.hudDestroy()
             })
+        }else {
+            self.toolbarHUD?.alpha = 0
+            self.alpha = 0
+            self.hudDestroy()
         }
     }
 

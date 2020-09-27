@@ -14,9 +14,9 @@ import UIKit
 
 open class HUD {
     
-    // MARK: - dismiss
-    class func dismiss() {
-        YProgressHUD.dismiss()
+    // MARK: - hide
+    class func hide(animate: Bool = true) {
+        YProgressHUD.dismiss(animate: animate)
     }
     
     // MARK: - toast
@@ -25,13 +25,13 @@ open class HUD {
     }
     
     // MARK: - loading
-    class func showLoading(_ status: String? = "loading...") {
+    class func loading(_ status: String? = "loading...") {
         YProgressHUD.animationType = .circleRotateChase
         YProgressHUD.show(status, interaction: false)
     }
     
     // MARK: - success
-    class func showSuccess(_ status: String? = "success") {
+    class func success(_ status: String? = "success") {
         if #available(iOS 13.0, *) {
             YProgressHUD.showSuccess(status)
         }else {
@@ -41,7 +41,7 @@ open class HUD {
     }
     
     // MARK: - failed
-    class func showFailed(_ status: String? = "failed") {
+    class func failed(_ status: String? = "failed") {
         if #available(iOS 13.0, *) {
             YProgressHUD.showError(status)
         }else {
@@ -51,11 +51,11 @@ open class HUD {
     }
 
     // MARK: - progress
-    class func showProgress(_ progress: CGFloat) {
+    class func progress(_ progress: CGFloat) {
         YProgressHUD.showProgress(progress, interaction: false)
     }
     
-    class func showProgress(_ status: String?, _ progress: CGFloat) {
+    class func progress(_ status: String?, _ progress: CGFloat) {
         YProgressHUD.showProgress(status , progress, interaction: false)
     }
     

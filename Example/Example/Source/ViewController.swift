@@ -57,12 +57,16 @@ class ViewController: UIViewController {
         
 // MARK: - 使用方式二（推荐）：根据目需求二次封装一个HUD类
 //        HUD.toast("Some text...")
-        HUD.toast("Some text...", delay: 5, interaction: false)
-//        HUD.showLoading()
-//        HUD.showSuccess()
-//        HUD.showFailed()
-//        HUD.showProgress(0.4)
-//        HUD.showProgress("upload...", 0.6)
+//        HUD.toast("Some text...", delay: 3, interaction: false)
+//        HUD.loading()
+//        HUD.success()
+//        HUD.failed()
+//        HUD.progress(0.4)
+//        HUD.progress("upload...", 0.6)
+        HUD.loading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            HUD.toast("success")
+        }
                 
     }
 }
